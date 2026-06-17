@@ -1,0 +1,383 @@
+:root {
+    /* Pure clean white, or an ultra-subtle ice white tint */
+    --bg-main: #ffffff;       /* Change this from the cream color to pure white */
+    --bg-card: #f8fafc;       /* A beautiful clean off-white for structural cards/inputs */
+    
+    --text-main: #0f172a;     /* Sharp charcoal black text */
+    --text-muted: #475569;    /* Clean steel gray for subtitles */
+    --border-style: 2px solid #0f172a; /* Keeps your brutalist layout lines perfectly sharp */
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Space Grotesk', sans-serif;
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    line-height: 1.6;
+    padding: 0 1.5rem;
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* --- GLOBAL NAVIGATION --- */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 0;
+    border-bottom: var(--border-style);
+}
+
+.logo {
+    font-family: 'Space Mono', monospace;
+    font-weight: 700;
+    font-size: 1.2rem;
+    text-decoration: none;
+    color: var(--text-main);
+    letter-spacing: -1px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-main);
+    font-weight: 500;
+    font-size: 0.95rem;
+}
+
+/* --- ASYMMETRIC PROFILE HEADER HERO --- */
+.hero-split-container {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 4rem;
+    padding: 6rem 0;
+    border-bottom: var(--border-style);
+    align-items: flex-start;
+}
+
+@media (max-width: 850px) {
+    .hero-split-container {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+        padding: 4rem 0;
+    }
+}
+
+.hero-left-profile h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -1.5px;
+    margin-bottom: 0.5rem;
+}
+
+.hero-left-profile .profile-title-lbl {
+    font-family: 'Space Mono', monospace;
+    color: #2563eb;
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+}
+
+.hero-action-buttons {
+    display: flex;
+    gap: 1rem;
+}
+
+.brutalist-btn {
+    display: inline-block;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-decoration: none;
+    color: var(--text-main);
+    background: var(--bg-card);
+    padding: 0.75rem 1.5rem;
+    /* Changed border and removed box-shadow for a simpler look */
+    border: 1px solid #0f172a;
+    box-shadow: none; 
+    text-transform: uppercase;
+    transition: transform 0.1s ease, background 0.1s ease;
+    cursor: pointer;
+}
+
+.brutalist-btn:hover {
+    transform: none;
+    background: #0f172a;
+    color: #ffffff;
+    box-shadow: none;
+}
+
+.brutalist-btn:hover {
+    transform: translate(1px, 1px);
+    box-shadow: 2px 2px 0px #0f172a;
+}
+
+.hero-right-bio {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.hero-right-bio p {
+    font-size: 1.15rem;
+    color: var(--text-muted);
+    font-weight: 400;
+    line-height: 1.6;
+}
+
+/* --- SPLIT GRID STRUCTURAL SECTIONS --- */
+.split-section {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    gap: 2rem;
+    padding: 5rem 0;
+    border-bottom: var(--border-style);
+}
+
+@media (max-width: 768px) {
+    .split-section {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        padding: 3rem 0;
+    }
+}
+
+/* --- SIDEBAR HEADINGS WITH SLIDING UNDERLINE (NEW SUGGESTION) --- */
+.section-sidebar h2 {
+    font-family: 'Space Mono', monospace;
+    font-size: 1.4rem;
+    font-weight: normal;
+    display: inline-block;
+    position: relative;
+    padding-bottom: 4px;
+    text-transform: lowercase;
+}
+
+.section-sidebar h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #2563eb;
+    transform: scaleX(0);
+    transform-origin: bottom left;
+    transition: transform 0.25s ease-out;
+}
+
+.split-section:hover .section-sidebar h2::after {
+    transform: scaleX(1);
+}
+
+/* --- HISTORY TIMELINE LINES --- */
+.history-list-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+}
+
+.history-item {
+    padding-left: 1.25rem;
+    border-left: 1px solid #0f172a; /* Vertical timeline lines */
+}
+
+.history-role {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--text-main);
+    line-height: 1.2;
+}
+
+.history-company {
+    font-size: 1.05rem;
+    color: var(--text-main);
+    margin-top: 0.2rem;
+}
+
+.history-date {
+    font-style: italic;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-top: 0.2rem;
+}
+
+/* --- TOOLS GRID LAUNCHPAD --- */
+.tools-grid-layout {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 1rem;
+}
+
+.tool-item-box {
+    background: var(--bg-card);
+    border: var(--border-style);
+    padding: 1.5rem 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    font-family: 'Space Grotesk', sans-serif;
+    transition: all 0.15s ease;
+}
+
+.tool-item-box:hover, .tool-item-box.active-pill {
+    background: #0f172a;
+    color: #ffffff;
+}
+
+/* --- PROJECTS CONTENT CARDS --- */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1.5rem;
+}
+
+.project-card {
+    background: var(--bg-card);
+    border: var(--border-style);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: all 0.2s ease;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+}
+
+.card-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+.card-tech-stack {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    font-family: 'Space Mono', monospace;
+}
+
+.card-link-btn {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.75rem;
+    background: var(--bg-main);
+    padding: 0.25rem 0.5rem;
+    border: var(--border-style);
+    font-weight: bold;
+    text-decoration: none;
+    color: var(--text-main);
+}
+
+.card-link-btn:hover {
+    background: #0f172a;
+    color: #ffffff;
+}
+
+.card-description {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    margin-top: 0.5rem;
+}
+
+.project-card.highlight-match {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 1px #2563eb;
+}
+.project-card.dimmed-card {
+    opacity: 0.25;
+}
+
+/* --- CONTACT MODULE STYLING (image_dacda8.png) --- */
+.contact-form-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem;
+    max-width: 600px;
+    width: 100%;
+}
+
+.form-group-block {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-group-block label {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--text-main);
+}
+
+.brutalist-input, .brutalist-textarea {
+    width: 100%;
+    background: var(--bg-card);
+    border: var(--border-style);
+    padding: 0.85rem 1rem;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1rem;
+    color: var(--text-main);
+    outline: none;
+}
+
+.brutalist-textarea {
+    resize: vertical;
+    min-height: 140px;
+}
+
+.form-error-msg {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.75rem;
+    color: #dc2626; /* Vibrant validation red alert text */
+    margin-top: 0.25rem;
+    display: none; /* Controlled via script.js execution loops */
+}
+
+/* --- FOOTER --- */
+footer {
+    padding: 3rem 0;
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    font-family: 'Space Mono', monospace;
+    color: var(--text-muted);
+}
+
+/* --- GLOBAL ANIMATION REVEALS --- */
+.reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
