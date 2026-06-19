@@ -1,11 +1,11 @@
 :root {
-    /* Pure clean white, or an ultra-subtle ice white tint */
-    --bg-main: #ffffff;       /* Change this from the cream color to pure white */
-    --bg-card: #f8fafc;       /* A beautiful clean off-white for structural cards/inputs */
     
-    --text-main: #0f172a;     /* Sharp charcoal black text */
-    --text-muted: #475569;    /* Clean steel gray for subtitles */
-    --border-style: 2px solid #0f172a; /* Keeps your brutalist layout lines perfectly sharp */
+    --bg-main: #ffffff;       
+    --bg-card: #f8fafc;      
+    
+    --text-main: #0f172a;     
+    --text-muted: #475569;    
+    --border-style: 2px solid #0f172a; 
 }
 
 html {
@@ -63,7 +63,7 @@ nav {
     font-size: 0.95rem;
 }
 
-/* --- ASYMMETRIC PROFILE HEADER HERO --- */
+/* --- PROFILE HEADER HERO --- */
 .hero-split-container {
     display: grid;
     grid-template-columns: 1.1fr 1fr;
@@ -161,7 +161,7 @@ nav {
     }
 }
 
-/* --- SIDEBAR HEADINGS WITH SLIDING UNDERLINE (NEW SUGGESTION) --- */
+/* --- SIDEBAR HEADINGS --- */
 .section-sidebar h2 {
     font-family: 'Space Mono', monospace;
     font-size: 1.4rem;
