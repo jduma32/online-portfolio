@@ -84,29 +84,32 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 5. BRUTALIST CONTACT DISPATCH VALIDATION ENGINE (image_dacda8.png)
     const dispatchForm = document.getElementById('dispatchForm');
-    const formMessage = document.getElementById('formMessage');
-    const formError = document.getElementById('formError');
 
-    if (dispatchForm && formMessage && formError) {
-        dispatchForm.addEventListener('submit', (e) => {
-            // Trim whitespace to see if anything real was actually typed
-            if (formMessage.value.trim() === "") {
-                e.preventDefault(); // Stop form submission
-                formError.style.display = 'block';
-                formMessage.style.borderColor = '#dc2626'; // Red alert boundary line
+    dispatchForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        const formData = new FormData(dispatchForm);
+        const object = Object.fromEntries(formData);
+        const json = JSON.stringify(object);
+
+        try {
+            const response = await fetch("https://api.web3forms.com/submit", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    Accept: "application/json",
+                },
+                body: json,
+            });
+
+            const result = await response.json();
+            if (result.success) {
+                alert("Dispatch successful! Message received.");
+                dispatchForm.reset();
             } else {
-                formError.style.display = 'none';
-                formMessage.style.borderColor = '#0f172a'; // Clear validation status
-                alert('Dispatch ready for delivery pipeline simulation!');
+                alert("Something went wrong. Please try again.");
             }
-        });
-
-        // Reset the red validation alerts instantly when user starts typing inside textarea
-        formMessage.addEventListener('input', () => {
-            if (formMessage.value.trim() !== "") {
-                formError.style.display = 'none';
-                formMessage.style.borderColor = '#0f172a';
-            }
-        });
-    }
-});
+        } catch (error) {
+            alert("Network error. Please check your connection.");
+        }
+    });
