@@ -93,5 +93,4 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
             alert("Message body cannot be empty.");
         }
-        // If valid, the form will submit naturally via the HTML 'action' attribute
     });
