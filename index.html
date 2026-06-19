@@ -127,16 +127,18 @@
         </section>
 
         <!-- /CONTACT DISPATCH CONSOLE MODULE -->
-		<!-- /CONTACT DISPATCH CONSOLE MODULE -->
+		
+<!-- /CONTACT DISPATCH CONSOLE MODULE -->
 <section id="contact" class="split-section">
     <div class="section-sidebar">
         <h2>Contact</h2>
     </div>
     
-    <form id="dispatchForm" class="contact-form-container">
+    <!-- Using the standard form action for maximum reliability -->
+    <form id="dispatchForm" class="contact-form-container" action="https://api.web3forms.com/submit" method="POST">
         
-        <!-- WEBFORM KEYS-->
-        <input type="hidden" name="access_key" value="9d656ef2-ebed-46ba-bdb8-2b429f4b1e31">
+        <!-- PASTE YOUR EXACT API KEY HERE -->
+        <input type="hidden" name="access_key" value="YOUR_ACTUAL_ACCESS_KEY_HERE">
 
         <div class="form-group-block">
             <label for="formName">Name</label>
