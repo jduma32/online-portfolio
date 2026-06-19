@@ -85,31 +85,13 @@ document.addEventListener('DOMContentLoaded', () => {
     // 5. BRUTALIST CONTACT DISPATCH VALIDATION ENGINE (image_dacda8.png)
     const dispatchForm = document.getElementById('dispatchForm');
 
-    dispatchForm.addEventListener('submit', async (e) => {
-        e.preventDefault();
+    dispatchForm.addEventListener('submit', (e) => {
+        const formMessage = document.getElementById('formMessage');
         
-        const formData = new FormData(dispatchForm);
-        const object = Object.fromEntries(formData);
-        const json = JSON.stringify(object);
-
-        try {
-            const response = await fetch("https://api.web3forms.com/submit", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    Accept: "application/json",
-                },
-                body: json,
-            });
-
-            const result = await response.json();
-            if (result.success) {
-                alert("Dispatch successful! Message received.");
-                dispatchForm.reset();
-            } else {
-                alert("Something went wrong. Please try again.");
-            }
-        } catch (error) {
-            alert("Network error. Please check your connection.");
+        // Basic check to ensure message isn't just empty spaces
+        if (formMessage.value.trim() === "") {
+            e.preventDefault();
+            alert("Message body cannot be empty.");
         }
+        // If valid, the form will submit naturally via the HTML 'action' attribute
     });
